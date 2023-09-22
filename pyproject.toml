@@ -8,7 +8,7 @@ version = "0.0.1"
 authors = [
   { name="Timothy Mak", email="tshmak@email.com" },
 ]
-description = "Data Quality checks for Custom Voice TTS"
+description = "Description of my_package"
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
