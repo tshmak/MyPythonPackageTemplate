@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=64.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my_package"
+version = "0.0.1"
+authors = [
+  { name="Timothy Mak", email="tshmak@email.com" },
+]
+description = "Data Quality checks for Custom Voice TTS"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Proprietary",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+smoketest = "my_package.tests.test:test"
+
+[project.urls]
+"Homepage" = "https://some.domain/my_package"
+"Bug Tracker" = "https://some.domain/my_package"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # ["."] by default
+namespaces = false 
+
+[tool.bumpversion]
+current_version = "0.0.1"
+commit = true
+tag = true
+
+[[tool.bumpversion.files]]
+filename = "src/my_package/__init__.py"
+
+[[tool.bumpversion.files]]
+filename = "README.md"
+
+[[tool.bumpversion.files]]
+filename = ".env"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+

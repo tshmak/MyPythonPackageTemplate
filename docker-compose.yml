@@ -1,0 +1,17 @@
+version: "2.3"
+
+services:
+  my_package:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: my_package
+
+  my_package_tests:
+    image: my_package
+    environment:
+      - VERSION=${VERSION}
+    volumes:
+      - /mnt/:/mnt/
+    command:
+      - smoketest 
