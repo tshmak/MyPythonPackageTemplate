@@ -37,9 +37,15 @@ fi
 # Check if OLDVERSION is found in the various files and bump version
 for f in .env README.md src/my_package/__init__.py pyproject.toml
 do
-    [ ! grep -q "$OLDVERSION" $f ] && echo "$OLDVERSION not found in $f" && exit
+    [ -z "$(grep $OLDVERSION $f)" ] && echo "$OLDVERSION not found in $f" && exit
     sed -i "s/$OLDVERSION/$NEWVERSION/g" $f
 done
+
+# bump version in various files
+sed -i "s/^VERSION=v$OLDVERSION/VERSION=v$NEWVERSION/" .env
+sed -i "s/v$OLDVERSION/v$NEWVERSION/" README.md
+sed -i "s/$OLDVERSION/$NEWVERSION/" src/my_package/__init__.py
+sed -i "s/$OLDVERSION/$NEWVERSION/" pyproject.toml
 
 # Append to CHANGELOG.md
 echo "# v$NEWVERSION" >> CHANGELOG.md
