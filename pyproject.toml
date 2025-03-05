@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "my_package"
-version = "0.0.1"
+version = "0.0.0"
 authors = [
   { name="Timothy Mak", email="tshmak@email.com" },
 ]
@@ -27,21 +27,4 @@ smoketest = "my_package.tests.test:test"
 [tool.setuptools.packages.find]
 where = ["src"]  # ["."] by default
 namespaces = false 
-
-[tool.bumpversion]
-current_version = "0.0.1"
-commit = true
-tag = true
-
-[[tool.bumpversion.files]]
-filename = "src/my_package/__init__.py"
-
-[[tool.bumpversion.files]]
-filename = "README.md"
-
-[[tool.bumpversion.files]]
-filename = ".env"
-
-[[tool.bumpversion.files]]
-filename = "pyproject.toml"
 
